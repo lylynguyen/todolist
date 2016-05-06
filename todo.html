@@ -1,0 +1,20 @@
+<section id="todoapp">
+    <header id="header">
+      <h1>Todo-List</h1>
+    </header>
+<form id="todo-form" ng-submit="addTodo()">
+  <input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo">
+</form>
+
+<section id="main">
+  <ul id="todo-list">
+    <li ng-repeat="todo in todos">
+    {{todo.title}}
+    </li>
+    <div class="view">
+      <input class="toggle" type="checkbox" ng-model="todo.completed">
+      <button class="destroy" ng-click="deleteTodo(todo)">Remove</button> 
+    </div>
+  </ul>
+</section>
+</section>
