@@ -16,12 +16,11 @@ angular.module('todolist.todos', [])
     }
 
     main.getTodos = function(){
-      var list = TodoService.getFromStorage();
+      TodoService.getFromStorage();
     }
 
     main.markCompleted = function(todo){
       var item = todo;
-      console.log(item);
       for(var key in todo){
         if(key === 'completed'){
           !todo[key];
@@ -34,7 +33,6 @@ angular.module('todolist.todos', [])
       var itemToDelete = main.todos[idx];
       main.todos.splice(idx, 1);
       TodoService.addToStorage(main.todos);
-      console.log(main.todos.length);
     }
 
     var clearAll = function(){
@@ -43,5 +41,6 @@ angular.module('todolist.todos', [])
       }
     }
 
+    main.getTodos();
     clearAll();
   })
