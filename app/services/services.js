@@ -1,20 +1,23 @@
 angular.module('todolist.service', [])
 .factory('TodoService', function () {
   var ID = 'todos';
-  var store = [];
-  var addToStorage = function(todos){
-    store.push(todos);
-    var value = JSON.stringify(store);
+  var addToStorage = function(todos){;
+    var value = JSON.stringify(todos);
     localStorage.setItem(ID, value);
   };
 
   var getFromStorage = function(){
-    return localStorage.getItem('todos')
+    return localStorage;
   };
+
+  var clearAll = function(){
+    localStorage.clear();
+  }
 
   return {
     addToStorage: addToStorage,
-    getFromStorage: getFromStorage
+    getFromStorage: getFromStorage,
+    clearAll: clearAll
   };
 
 

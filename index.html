@@ -1,37 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>ToDoList</title>
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="assets/app.css">
   <style>[ng-cloak] { display: none; }</style>
-</head>
-<body ng-app="todolist" ng-controller="TodoController as main" >
-  <section id="todoapp">
-    <header id="header">
-      <h1>Todo-List</h1>o
-      <form id="todo-form" ng-submit="main.addTodo()">
-        <input type="text" id="new-todo" placeholder="What needs to be done?" ng-model="main.newTodo">
-      </form>
-    </header>
-    <section id="main" ng-show="main.todos.length" ng-cloak>
-      <ul id="todo-list">
-        <li ng-repeat="todo in main.todos" >
-        <div class="view">
-          <p>
-          <input type="checkbox" ng-model="todo.completed" ng-change="main.markCompleted(todo)">
-            <label class="completed-{{todo.completed}}">
-            {{todo.title}}</label>
-          <button class="destroy " ng-click="main.removeTodo($index)"></button></p>
-        </div>
-        </li>
-      </ul>
-    </section>
-  </section>
 
-<script src="node_modules/angular/angular.js"></script>
-<script src="js/app.js"></script>
-<script src="js/controllers/todoController.js"></script>
-<script src="js/services/services.js"></script>
+<body>
+
+  <div ui-view></div>
+  <a ui-sref="todos"></a>
+
+
+
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-resource/angular-resource.js"></script>
+  <script src"node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controller/todoController.js"></script>
+  <script src="app/services/services.js"></script>
+</head>
+
 </body>
+
 </html>
