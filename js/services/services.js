@@ -1,8 +1,10 @@
 angular.module('todolist.service', [])
 .factory('TodoService', function () {
   var ID = 'todos';
+  var store = [];
   var addToStorage = function(todos){
-    var value = JSON.stringify(todos);
+    store.push(todos);
+    var value = JSON.stringify(store);
     localStorage.setItem(ID, value);
   };
 

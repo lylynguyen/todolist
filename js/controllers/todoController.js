@@ -1,23 +1,21 @@
 angular.module('todolist.todos', [])
   .controller('TodoController', function ($scope, TodoService){
     var main = this;
-   
-    
     main.newTodo = '';
-    main.todos = [];
+
+
+    var loadData = function(){
+      main.todos = TodoService.getFromStorage();
+    }
 
     main.addTodo = function(){
       var newTodo = {
-        title: main.newTodo,
+        title: main.newTodo.trim(),
         completed: false
       }
-      main.todos.push(newTodo);
-      TodoService.addToStorage(main.todos);
-      main.newTodo = '';
-    }
 
-    main.getTodos = function(){
-      main.todos = JSON.parse(TodoService.getFromStorage())
+      TodoService.addToStorage(newTodo);
+      main.newTodo = '';
     }
 
     main.markCompleted = function(todo){
@@ -37,4 +35,6 @@ angular.module('todolist.todos', [])
       TodoService.addToStorage(main.todos);
       main.getTodos()
     }
+
+    loadData();
   })
